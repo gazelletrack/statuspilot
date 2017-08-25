@@ -140,6 +140,8 @@ Template.UserSettingsProfileEditForm.helpers({
 	},
 	"errorMessage": function() {
 		return pageSession.get("userSettingsProfileEditFormErrorMessage");
+	},
+	countrySelected: function(countryName){
+		return Meteor.user().profile.country == countryName ? 'selected' : '';
 	}
-	
 });
