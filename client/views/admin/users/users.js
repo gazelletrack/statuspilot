@@ -316,6 +316,12 @@ Template.AdminUsersViewTableItems.events({
 		e.preventDefault();
 		Router.go("admin.users.edit", mergeObjects(Router.currentRouteParams(), {userId: this._id}));
 		return false;
+	},
+	"click #remove-button": function(e, t) {
+		e.preventDefault();
+		var this_id = $(e.target).attr('u-id');
+		Meteor.users.remove(this_id);
+		return false;
 	}
 });
 
