@@ -42,32 +42,35 @@
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Features <b class=" icon-angle-down"></b></a>
 								<ul class="dropdown-menu">
-									<li><a href="typography.html">Typography</a></li>
-									<li><a href="components.html">Components</a></li>
-									<li><a href="pricingbox.html">Pricing box</a></li>
+									<li><a href="#">Typography</a></li>
+									<li><a href="#">Components</a></li>
+									<li><a href="#">Pricing box</a></li>
 								</ul>
 							</li>
-							<li><a href="portfolio.html">Portfolio</a></li>
-							<li><a href="blog.html">Blog</a></li>
-							<li><a href="contact.html">Contact</a></li>
+							<li><a href="#">Portfolio</a></li>
+							<li><a href="#">Blog</a></li>
+							<li><a href="#">Contact</a></li>
 							
 							{{#if isPrivateZone}}
 							<li class="dropdown {{menuItemClass 'admin'}}">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									<i class="fa fa-user" aria-hidden="true"></i> {{userName}} <i class="fa fa-chevron-down" aria-hidden="true"></i>
+									<i class="fa fa-user"></i> &nbsp;{{userName}} <i class="fa fa-chevron-down"></i>
 								</a>
 								<ul class="dropdown-menu">
 									<li id="menu-item-simple">
 										<a href="{{pathFor 'admin'}}">
-											<span class="fa fa-wrench"></span>
-											<span class="item-title">Manage Users</span>
+											<i class="fa fa-wrench"></i> &nbsp;<span class="item-title">Manage Users</span>
 										</a>
 									</li>
 									<li>
-										<a href="{{pathFor 'user_settings'}}"><span class="item-title">Settings</span></a>
+										<a href="{{pathFor 'user_settings'}}">
+											<i class="fa fa-cog"></i> &nbsp;<span class="item-title">Settings</span>
+										</a>
 									</li>
 									<li>
-										<a href="{{pathFor 'logout'}}"><span class="item-title">Logout</span></a>
+										<a href="{{pathFor 'logout'}}">
+											<i class="fa fa-power-off"></i> &nbsp;<span class="item-title">Logout</span>
+										</a>
 									</li>
 								</ul>
 							</li>
@@ -89,6 +92,7 @@
 
 		{{#if isPrivateZone}}
 			{{> PrivateLayout privateData}}
+			<!-- {{> AdminUsers}} -->
 		{{else}}
 			{{> PublicLayout publicData}}
 		<!-- end header -->
@@ -315,10 +319,6 @@
 </template>
 
 <template name="PrivateLayout">
-	<div id="content" class="sticky-wrapper">
-		<div class="navbar-spacer">
-		</div>
-		{{> yield}}
-	</div>
+	{{> yield}}
 </template>
 
