@@ -84,4 +84,6 @@ Router.map(function () {
 	this.route("/user_settings/profile", {name: "user_settings.profile", controller: "UserSettingsProfileController"});
 	this.route("/user_settings/change_pass", {name: "user_settings.change_pass", controller: "UserSettingsChangePassController"});
 	this.route("/logout", {name: "logout", controller: "LogoutController"});
+	
+	this.route("/contact", {name: "contact", controller: "ContactController"});
 });
