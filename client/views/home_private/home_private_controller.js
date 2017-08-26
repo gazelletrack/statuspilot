@@ -42,6 +42,9 @@ this.HomePrivateController = RouteController.extend({
 	},
 
 	onAfterAction: function() {
-		
+		if ( Users.isInRole(Meteor.userId(), "admin") ) {
+			// go to user lists if admin
+			Router.go("/admin/users");
+		}
 	}
 });

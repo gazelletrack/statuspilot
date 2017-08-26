@@ -197,9 +197,10 @@ Accounts.onCreateUser(function (options, user) {
 		user.profile = options.profile;
 	}
 
+	// create the very first user as admin
 	if(!Users.findOne({ roles: "admin" }) && user.roles.indexOf("admin") < 0) {
 		user.roles.push("admin");
-	 }
+	}
 
 	return user;
 });
