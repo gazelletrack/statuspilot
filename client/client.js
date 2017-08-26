@@ -44,6 +44,13 @@ Helpers.userEmail = function() {
 	return email;
 };
 
+Helpers.userName = function() {
+	var username = "";
+	if(Meteor.user() && Meteor.user().profile)
+		username = Meteor.user().username;
+	return username;
+};
+
 Helpers.userIsAdmin = function() {
 	var user = Meteor.user();
 	if(!user || !user.roles) {
