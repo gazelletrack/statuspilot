@@ -68,15 +68,3 @@ Template.layout.helpers({
 		
 	}
 });
-
-Template.PublicLayout.onCreated(function() {
-	
-	var subs = [
-		];
-});
-
-Template.PrivateLayout.onCreated(function() {
-	
-	var subs = [
-		];
-});
