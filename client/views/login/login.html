@@ -14,35 +14,32 @@
 
 	<section id="content">
 	<div class="container">
-		<form id="login_form" class="account-form" role="form">
-			<h2>
-				Please sign in
-			</h2>
-			{{#if errorMessage}}
-			<div class="alert alert-warning">
-				{{errorMessage}}
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<h4>Please sign in</h4>
+
+				<form id="login_form" role="form">
+					<div class="form-group">
+						<input id="login_email" type="text" class="form-control" placeholder="Username or Email address" required autofocus>
+					</div>
+					<div class="form-group">
+						<input id="login_password" type="password" class="form-control" placeholder="Password" required>
+					</div>
+
+					<div class="text-center">
+						<button type="submit" class="btn btn-theme" data-loading-text="Please wait...">Sign in</button>
+					</div>
+
+					<br>
+					<p class="account-form-text-after" id="register-link">
+						Not a member? <a href="{{pathFor 'register'}}">Sign up here</a>
+					</p>
+					<p class="account-form-text-after" id="forgot-password-link">
+						Forgot password? <a href="{{pathFor 'forgot_password'}}">Click here</a>
+					</p>
+				</form>
 			</div>
-			{{/if}}
-			<div id="login-with-password" style="padding-top: 10px;">
-				<input id="login_email" type="text" class="form-control" placeholder="Username or Email address" required autofocus>
-				<input id="login_password" type="password" class="form-control" placeholder="Password" required>
-				<button class="btn btn-lg btn-primary btn-block" type="submit" data-loading-text="Please wait...">
-					Sign in
-				</button>
-				<p class="account-form-text-after" id="register-link">
-					Not a member?
-					<a href="{{pathFor 'register'}}">
-						Sign up here
-					</a>
-				</p>
-				<p class="account-form-text-after" id="forgot-password-link">
-					Forgot password?
-					<a href="{{pathFor 'forgot_password'}}">
-						Click here
-					</a>
-				</p>
-			</div>
-		</form>
+		</div>
 	</div>
 	</section>
 </template>
