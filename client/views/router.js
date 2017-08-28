@@ -43,8 +43,8 @@ Router.roleMap = [
 ];
 
 Router.defaultFreeRoute = "";
-Router.defaultPublicRoute = "home";
-Router.defaultPrivateRoute = "home";
+Router.defaultPublicRoute = "login";
+Router.defaultPrivateRoute = "user_settings.instagram_accounts";
 
 Router.waitOn(function() { 
 	Meteor.subscribe("current_user_data");
