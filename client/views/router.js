@@ -7,7 +7,6 @@ Router.configure({
 });
 
 Router.publicRoutes = [
-	"home_public",
 	"login",
 	"register",
 	"verify_email",
@@ -16,7 +15,6 @@ Router.publicRoutes = [
 ];
 
 Router.privateRoutes = [
-	"home_private",
 	"admin",
 	"admin.users",
 	"admin.users.details",
@@ -25,6 +23,7 @@ Router.privateRoutes = [
 	"user_settings",
 	"user_settings.profile",
 	"user_settings.change_pass",
+	"user_settings.instagram_accounts",
 	"logout"
 ];
 
@@ -44,8 +43,8 @@ Router.roleMap = [
 ];
 
 Router.defaultFreeRoute = "";
-Router.defaultPublicRoute = "home_public";
-Router.defaultPrivateRoute = "home_private";
+Router.defaultPublicRoute = "home";
+Router.defaultPrivateRoute = "home";
 
 Router.waitOn(function() { 
 	Meteor.subscribe("current_user_data");
@@ -67,14 +66,15 @@ Router.onBeforeAction(Router.ensureLogged, {only: Router.privateRoutes});
 Router.onBeforeAction(Router.ensureGranted, {only: Router.freeRoutes}); // yes, route from free zone can be restricted to specific set of user roles
 
 Router.map(function () {
-	
-	this.route("/", {name: "home_public", controller: "HomePublicController"});
+
+	// public routes	
 	this.route("/login", {name: "login", controller: "LoginController"});
 	this.route("/register", {name: "register", controller: "RegisterController"});
 	this.route("/verify_email/:verifyEmailToken", {name: "verify_email", controller: "VerifyEmailController"});
 	this.route("/forgot_password", {name: "forgot_password", controller: "ForgotPasswordController"});
 	this.route("/reset_password/:resetPasswordToken", {name: "reset_password", controller: "ResetPasswordController"});
-	this.route("/home_private", {name: "home_private", controller: "HomePrivateController"});
+
+	// private routes
 	this.route("/admin", {name: "admin", controller: "AdminController"});
 	this.route("/admin/users", {name: "admin.users", controller: "AdminUsersController"});
 	this.route("/admin/users/details/:userId", {name: "admin.users.details", controller: "AdminUsersDetailsController"});
@@ -83,7 +83,10 @@ Router.map(function () {
 	this.route("/user_settings", {name: "user_settings", controller: "UserSettingsController"});
 	this.route("/user_settings/profile", {name: "user_settings.profile", controller: "UserSettingsProfileController"});
 	this.route("/user_settings/change_pass", {name: "user_settings.change_pass", controller: "UserSettingsChangePassController"});
+	this.route("/user_settings/instagram_accounts", {name: "user_settings.instagram_accounts", controller: "UserSettingsInstagramsController"});
 	this.route("/logout", {name: "logout", controller: "LogoutController"});
-	
+
+	// global routes - access to everyone
+	this.route("/", {name: "home", controller: "Home"});
 	this.route("/contact", {name: "contact", controller: "ContactController"});
 });
