@@ -1,0 +1,27 @@
+<template name="UserSettingsInstagrams">
+	<form id="change_pass_form" class="account-form" role="form">
+		<h2>
+			Instagram Accounts
+		</h2>
+		{{#if errorMessage}}
+		<div class="alert alert-warning">
+			{{errorMessage}}
+		</div>
+		{{/if}}
+
+		{{#if infoMessage}}
+		<div class="alert alert-success">
+			{{infoMessage}}
+		</div>
+		{{/if}}
+
+		{{#each InstagramAccounts}}
+  		<input id="username" type="text" class="form-control" value="{{this.username}}" disabled>
+		<input id="password" type="password" class="form-control" placeholder="Your instagram password" required>
+		{{/each}}
+
+		<!-- {{InstagramAccounts}} -->
+
+		<button class="btn btn-lg btn-primary btn-block" type="submit" data-loading-text="Please wait...">Update Accounts</button>
+	</form>
+</template>
