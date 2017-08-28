@@ -48,7 +48,6 @@ Template.UserSettingsInstagrams.helpers({
 		return pageSession.get("infoMessage");
 	},
 	InstagramAccounts: function() {
-		console.log(Users.findOne({_id:Meteor.userId()}, {}).profile.instagram);
 		return Users.findOne({_id:Meteor.userId()}, {}).profile.instagram;
 	}
 	
