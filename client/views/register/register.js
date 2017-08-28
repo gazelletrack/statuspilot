@@ -92,17 +92,10 @@ Template.Register.events({
 				firstName: register_first_name,
 				lastName: register_last_name,
 				cellPhone: register_cell_no,
-				// targets
-				targetAudience: register_target_audience,
-				targetHashtag: register_target_hashtags,
+				country: register_country,
+				// misc
 				commentPhrase: register_phrase,
 				yesNo: register_yes_no,
-				country: register_country,
-				// instagram info
-				instagram: [{
-					username: register_instagram,
-					password: register_insta_pass
-				}]
 			}
 		}, function(err) {
 			submit_button.button("reset");
@@ -115,6 +108,19 @@ Template.Register.events({
 			}
 			else
 			{
+				// Create Instagram collection here
+				/*
+				Instagrams.insert({
+					active : false,
+					lastpaydate : null,
+					paid : false,
+					username : register_instagram,
+					password : register_insta_pass,
+					targetAudience : register_target_audience,
+					targetUsers : register_target_hashtags
+				});
+				*/
+
 				pageSession.set("errorMessage", "");
 				pageSession.set("verificationEmailSent", true);
 			}
