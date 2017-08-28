@@ -100,9 +100,8 @@ Template.Register.events({
 				country: register_country,
 				// instagram info
 				instagram: [{
-					inUsername: register_instagram,
-					accountPass: register_insta_pass,
-					confirmPass: confirm_insta_pass
+					username: register_instagram,
+					password: register_insta_pass
 				}]
 			}
 		}, function(err) {
