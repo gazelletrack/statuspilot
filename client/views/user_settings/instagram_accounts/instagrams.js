@@ -48,7 +48,7 @@ Template.UserSettingsInstagrams.helpers({
 		return pageSession.get("infoMessage");
 	},
 	InstagramAccounts: function() {
-		return Users.findOne({_id:Meteor.userId()}, {}).profile.instagram;
+		return Instagrams.find({belongs_to:Meteor.userId()}, {});
 	}
 	
 });

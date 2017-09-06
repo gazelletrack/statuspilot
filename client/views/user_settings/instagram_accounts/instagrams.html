@@ -16,6 +16,7 @@
 		{{/if}}
 
 		{{#each InstagramAccounts}}
+		<h4>Account: {{this.username}}</h4>
 		<div class="form-group">
 			<label for="username">
 				<i class="fa fa-instagram"></i> Username
@@ -34,6 +35,42 @@
 			</label>
 			<div class="input-div">
 				<input id="password" type="password" class="form-control" required>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="target-audience">
+				Active?
+			</label>
+			<div class="input-div">
+				<input id="target-audience" type="text" class="form-control" value="{{#if this.active}} Active {{else}} Inactive {{/if}}" disabled>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="target-audience">
+				Paid?
+			</label>
+			<div class="input-div">
+				<input id="target-audience" type="text" class="form-control" value="{{#if this.paid}} Paid {{else}} Unpaid {{/if}}" disabled>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="target-audience">
+				Last Pay Date
+			</label>
+			<div class="input-div">
+				<input id="target-audience" type="text" class="form-control" value="{{this.lastPayDate}}" disabled>
 				<span id="help-text" class="help-block">
 				</span>
 				<span id="error-text" class="help-block">
