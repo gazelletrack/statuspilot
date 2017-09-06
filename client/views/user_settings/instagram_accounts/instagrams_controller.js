@@ -20,7 +20,7 @@ this.UserSettingsInstagramsController = RouteController.extend({
 		
 
 		var subs = [
-			Meteor.subscribe("current_user_data")
+			Meteor.subscribe("instagrams")
 		];
 		var ready = true;
 		_.each(subs, function(sub) {
@@ -35,10 +35,7 @@ this.UserSettingsInstagramsController = RouteController.extend({
 
 		var data = {
 			params: this.params || {},
-			current_user_data: Users.findOne({_id:Meteor.userId()}, {})
 		};
-		
-
 		
 
 		return data;
