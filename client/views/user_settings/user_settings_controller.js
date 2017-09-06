@@ -11,7 +11,7 @@ this.UserSettingsController = RouteController.extend({
 	},
 
 	action: function() {
-		this.redirect('user_settings.profile', this.params || {}, { replaceState: true });
+		this.redirect('user_settings.instagram_accounts', this.params || {}, { replaceState: true });
 		/*ACTION_FUNCTION*/
 	},
 
