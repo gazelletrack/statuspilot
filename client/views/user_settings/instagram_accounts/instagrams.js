@@ -23,19 +23,39 @@ Template.UserSettingsInstagrams.onRendered(function() {
 });
 
 Template.UserSettingsInstagrams.events({
-	'submit #instagrams_form' : function(e, t) {
+	'submit .instagrams_form' : function(e, t) {
 		e.preventDefault();
 
 		pageSession.set("errorMessage", "");
 		pageSession.set("infoMessage", "");
 
-		var submit_button = $(t.find(":submit"));
+		let this_id = $(e.target).find('.single-wrap').attr('data-id');
+		let username = $(e.target).find('#username').val();
+		let insta_pass = $(e.target).find('#password').val();
+		let target_audience = $(e.target).find('#target-audience').val();
+		let target_hashtags = $(e.target).find('#target-users').val();
 
-		var password = t.find('#password').value;
+		console.log(this_id, insta_pass, target_audience, target_hashtags);
 
-		submit_button.button("loading");
+		Instagrams.update({_id: this_id}, {
+			$set: {
+				password : insta_pass,
+				targetAudience : target_audience,
+				targetUsers : target_hashtags
+			}
+		}, function (err, res) {
+			if (err) {
+				throw err;
+				pageSession.set("errorMessage", err);
+			}
+			if (res) {
+				console.log(res);
+				pageSession.set("errorMessage", "");
+				pageSession.set("infoMessage", "Instagram profile updated for <strong>" + username + "</strong>");
+			}
+		});
 
-		return false; 
+		return false;
 	}
 
 });

@@ -1,117 +1,122 @@
 <template name="UserSettingsInstagrams">
-	<form id="change_pass_form" class="account-form" role="form">
-		<h2>
-			Instagram Accounts
-		</h2>
-		{{#if errorMessage}}
-		<div class="alert alert-warning">
-			{{errorMessage}}
-		</div>
-		{{/if}}
+	<h2>
+		Instagram Accounts
+	</h2>
+	{{#if errorMessage}}
+	<div class="alert alert-warning">
+		{{errorMessage}}
+	</div>
+	{{/if}}
 
-		{{#if infoMessage}}
-		<div class="alert alert-success">
-			{{infoMessage}}
-		</div>
-		{{/if}}
+	{{#if infoMessage}}
+	<div class="alert alert-success">
+		{{{infoMessage}}}
+	</div>
+	{{/if}}
 
-		{{#each InstagramAccounts}}
-		<h4>Account: {{this.username}}</h4>
-		<div class="form-group">
-			<label for="username">
-				<i class="fa fa-instagram"></i> Username
-			</label>
-			<div class="input-div">
-				<input id="username" type="text" class="form-control" value="{{this.username}}" disabled>
-				<span id="help-text" class="help-block">
-				</span>
-				<span id="error-text" class="help-block">
-				</span>
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="password">
-				<i class="fa fa-instagram"></i> Password
-			</label>
-			<div class="input-div">
-				<input id="password" type="password" class="form-control" required>
-				<span id="help-text" class="help-block">
-				</span>
-				<span id="error-text" class="help-block">
-				</span>
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="target-audience">
-				Active?
-			</label>
-			<div class="input-div">
-				<input id="target-audience" type="text" class="form-control" value="{{#if this.active}} Active {{else}} Inactive {{/if}}" disabled>
-				<span id="help-text" class="help-block">
-				</span>
-				<span id="error-text" class="help-block">
-				</span>
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="target-audience">
-				Paid?
-			</label>
-			<div class="input-div">
-				<input id="target-audience" type="text" class="form-control" value="{{#if this.paid}} Paid {{else}} Unpaid {{/if}}" disabled>
-				<span id="help-text" class="help-block">
-				</span>
-				<span id="error-text" class="help-block">
-				</span>
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="target-audience">
-				Last Pay Date
-			</label>
-			<div class="input-div">
-				<input id="target-audience" type="text" class="form-control" value="{{this.lastPayDate}}" disabled>
-				<span id="help-text" class="help-block">
-				</span>
-				<span id="error-text" class="help-block">
-				</span>
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="target-audience">
-				Target Audience
-			</label>
-			<div class="input-div">
-				<input id="target-audience" type="text" class="form-control" value="{{this.targetAudience}}">
-				<span id="help-text" class="help-block">
-				</span>
-				<span id="error-text" class="help-block">
-				</span>
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="target-users">
-				Target Users
-			</label>
-			<div class="input-div">
-				<input id="target-users" type="text" class="form-control" value="{{this.targetUsers}}">
-				<span id="help-text" class="help-block">
-				</span>
-				<span id="error-text" class="help-block">
-				</span>
-			</div>
-		</div>
-		<br>
-		{{/each}}
+	{{#each InstagramAccounts}}
+		{{> InstagramAccountSingle}}
+	{{/each}}
+</template>
 
-		<div class="form-group">
-			<div class="submit-div">
-				<button id="form-submit-button" class="btn btn-success" type="submit" data-loading-text="Please wait...">
-					<span class="fa fa-check"></span>
-					Update Account Information
-				</button>
+<template name="InstagramAccountSingle">
+	<form class="instagrams_form" role="form">
+		<div class="single-wrap" data-id="{{this._id}}">
+			<h4>Account: {{this.username}}</h4>
+			<div class="form-group">
+				<label for="username">
+					<i class="fa fa-instagram"></i> Username
+				</label>
+				<div class="input-div">
+					<input id="username" type="text" class="form-control" value="{{this.username}}" disabled>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
 			</div>
-		</div>
+			<div class="form-group">
+				<label for="password">
+					<i class="fa fa-instagram"></i> Password
+				</label>
+				<div class="input-div">
+					<input id="password" type="password" class="form-control" value="{{this.password}}" required>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="active">
+					Active?
+				</label>
+				<div class="input-div">
+					<input id="active" type="text" class="form-control" value="{{#if this.active}} Active {{else}} Inactive {{/if}}" disabled>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="paid">
+					Paid?
+				</label>
+				<div class="input-div">
+					<input id="paid" type="text" class="form-control" value="{{#if this.paid}} Paid {{else}} Unpaid {{/if}}" disabled>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="last-pay-date">
+					Last Pay Date
+				</label>
+				<div class="input-div">
+					<input id="last-pay-date" type="text" class="form-control" value="{{this.lastPayDate}}" disabled>
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="target-audience">
+					Target Audience
+				</label>
+				<div class="input-div">
+					<input id="target-audience" type="text" class="form-control" value="{{this.targetAudience}}">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="target-users">
+					Target Users
+				</label>
+				<div class="input-div">
+					<input id="target-users" type="text" class="form-control" value="{{this.targetUsers}}">
+					<span id="help-text" class="help-block">
+					</span>
+					<span id="error-text" class="help-block">
+					</span>
+				</div>
+			</div>
 
+			<div class="form-group">
+				<div class="submit-div">
+					<button id="form-submit-button" class="btn btn-success" type="submit" data-loading-text="Please wait...">
+						<span class="fa fa-check"></span>
+						Update Account Information
+					</button>
+				</div>
+			</div>
+			<br>
+		</div>
 	</form>
 </template>
