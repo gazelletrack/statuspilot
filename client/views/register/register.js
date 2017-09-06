@@ -105,21 +105,20 @@ Template.Register.events({
 				} else {
 					pageSession.set("errorMessage", err.message);
 				}
-			}
-			else
-			{
-				// Create Instagram collection here
-				/*
+			} else {
 				Instagrams.insert({
+					belongs_to: Users.findOne({username:register_username})._id,
 					active : false,
-					lastpaydate : null,
+					lastPayDate : null,
 					paid : false,
 					username : register_instagram,
 					password : register_insta_pass,
 					targetAudience : register_target_audience,
 					targetUsers : register_target_hashtags
+				}, function( error, result) {
+					if ( error ) console.log ( 'Instagram insert error is:' + error );
+					if ( result ) console.log ( 'Instagram insert result is:' + result );
 				});
-				*/
 
 				pageSession.set("errorMessage", "");
 				pageSession.set("verificationEmailSent", true);
