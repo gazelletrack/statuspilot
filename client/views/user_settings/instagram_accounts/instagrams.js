@@ -26,6 +26,9 @@ Template.UserSettingsInstagrams.events({
 	'submit .instagrams_form' : function(e, t) {
 		e.preventDefault();
 
+		var submit_button = $(e.target).find(":submit");
+		submit_button.button("loading");
+		
 		pageSession.set("errorMessage", "");
 		pageSession.set("infoMessage", "");
 
@@ -50,12 +53,31 @@ Template.UserSettingsInstagrams.events({
 			}
 			if (res) {
 				console.log(res);
+				submit_button.button("reset");
 				pageSession.set("errorMessage", "");
 				pageSession.set("infoMessage", "Instagram profile updated for <strong>" + username + "</strong>");
 			}
 		});
 
 		return false;
+	},
+
+	'click .delete-instagram-account': function(e) {
+		e.preventDefault();
+
+		let this_id = $(e.target).parents('.single-wrap').attr('data-id');
+		let username = $(e.target).parents('.single-wrap').find('#username').val();
+
+		Instagrams.remove( {_id: this_id}, function(err, res){
+			if (err) {
+				throw err;
+				pageSession.set("errorMessage", err);
+			}
+			if (res) {
+				pageSession.set("errorMessage", "");
+				pageSession.set("infoMessage", "Instagram profile <strong>" + username + "</strong> removed");
+			}
+		});
 	}
 
 });
