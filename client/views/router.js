@@ -24,6 +24,7 @@ Router.privateRoutes = [
 	"user_settings.profile",
 	"user_settings.change_pass",
 	"user_settings.instagram_accounts",
+	"user_settings.add_instagram_account",
 	"logout"
 ];
 
@@ -39,7 +40,9 @@ Router.roleMap = [
 	{ route: "admin.users.edit",	roles: ["admin"] },
 	{ route: "user_settings",	roles: ["subscriber","admin"] },
 	{ route: "user_settings.profile",	roles: ["subscriber","admin"] },
-	{ route: "user_settings.change_pass",	roles: ["subscriber","admin"] }
+	{ route: "user_settings.change_pass",	roles: ["subscriber","admin"] },
+	{ route: "user_settings.instagram_accounts",	roles: ["subscriber","admin"] },
+	{ route: "user_settings.add_instagram_account",	roles: ["subscriber","admin"] }
 ];
 
 Router.defaultFreeRoute = "";
@@ -84,6 +87,7 @@ Router.map(function () {
 	this.route("/user_settings/profile", {name: "user_settings.profile", controller: "UserSettingsProfileController"});
 	this.route("/user_settings/change_pass", {name: "user_settings.change_pass", controller: "UserSettingsChangePassController"});
 	this.route("/user_settings/instagram_accounts", {name: "user_settings.instagram_accounts", controller: "UserSettingsInstagramsController"});
+	this.route("/user_settings/add_instagram_account", {name: "user_settings.add_instagram_account", controller: "UserSettingsAddInstagramController"});
 	this.route("/logout", {name: "logout", controller: "LogoutController"});
 
 	// global routes - access to everyone
