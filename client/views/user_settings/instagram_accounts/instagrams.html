@@ -1,6 +1,7 @@
 <template name="UserSettingsInstagrams">
 	<h2>
 		Instagram Accounts
+		<a class="btn btn-theme pull-right" href="{{pathFor 'user_settings.add_instagram_account'}}">Add account</a>
 	</h2>
 	{{#if errorMessage}}
 	<div class="alert alert-warning">
