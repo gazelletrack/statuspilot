@@ -1,0 +1,50 @@
+<template name="UserSettingsAddInstagram">
+	<h2>
+		Add new Instagram account
+	</h2>
+	{{#if errorMessage}}
+	<div class="alert alert-warning">
+		{{errorMessage}}
+	</div>
+	{{/if}}
+
+	{{#if infoMessage}}
+	<div class="alert alert-success">
+		{{{infoMessage}}}
+	</div>
+	{{/if}}
+
+
+	{{> AddInstagramAccount}}
+
+</template>
+
+<template name="AddInstagramAccount">
+	<form id="add_instagram_form" role="form">
+		<h4><i class="fa fa-instagram"></i> Enter Instagram account info below</h4>
+		<div class="form-group">
+			<input id="add_instagram" type="text" class="form-control" placeholder="Instagram" required>
+		</div>
+		<div class="form-group">
+			<input id="add_insta_pass" type="password" class="form-control" placeholder="Instagram Password" required>
+		</div>
+		<div class="form-group">
+			<input id="confirm_insta_pass" type="password" class="form-control" placeholder="Confirm Instagram Password" required>
+		</div>
+		<br>
+		<div class="form-group">
+			<input id="add_target_audience" type="text" class="form-control" placeholder="Target Audience">
+		</div>
+		<div class="form-group">
+			<input id="add_target_hashtags" type="text" class="form-control" placeholder="Target Hashtags">
+		</div>
+
+		<div class="form-group">
+			<button type="submit" class="btn btn-success" data-loading-text="Please wait...">Add new account</button>
+		</div>
+	</form>
+
+	<br>
+	<a class="btn btn-theme" href="{{pathFor 'user_settings.instagram_accounts'}}">Back to account list</a>
+	
+</template>
