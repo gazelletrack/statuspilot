@@ -11,7 +11,8 @@ Router.publicRoutes = [
 	"register",
 	"verify_email",
 	"forgot_password",
-	"reset_password"
+	"reset_password",
+	"payment"
 ];
 
 Router.privateRoutes = [
@@ -73,6 +74,7 @@ Router.map(function () {
 	// public routes	
 	this.route("/login", {name: "login", controller: "LoginController"});
 	this.route("/register", {name: "register", controller: "RegisterController"});
+	this.route("/payment", {name: "payment", controller: "PaymentController"});
 	this.route("/verify_email/:verifyEmailToken", {name: "verify_email", controller: "VerifyEmailController"});
 	this.route("/forgot_password", {name: "forgot_password", controller: "ForgotPasswordController"});
 	this.route("/reset_password/:resetPasswordToken", {name: "reset_password", controller: "ResetPasswordController"});
